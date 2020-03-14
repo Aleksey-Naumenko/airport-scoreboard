@@ -1,8 +1,9 @@
 import { createSelector } from 'reselect';
 
 export const flightsDataSelector = state => state.flightsList.flightsData;
+export const flightIdSelector = state => state.flightsList.searchFlight;
 
-export const getgetDeprtureListSelector = createSelector(
+export const getDepartureListSelector = createSelector(
     [flightsDataSelector],
     (dataList) => {
         if (dataList) {
@@ -17,6 +18,16 @@ export const getArrivalListSelector = createSelector(
     (dataList) => {
         if (dataList) {
             return dataList.body.arrival;
+        }
+        return dataList;
+    }
+);
+
+export const getSearchFlightSelector = createSelector(
+    [getDepartureListSelector, flightIdSelector],
+    (dataList, flightId) => {
+        if (dataList) {
+            return dataList.find(flight => flight.fltNo === flightId)
         }
         return dataList;
     }

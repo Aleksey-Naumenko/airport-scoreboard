@@ -21,7 +21,6 @@ class SearchResult extends Component {
                     <Link to="/departures">
                         <button
                             className='departures-btn btn'
-                        // onClick={this.props.departures}
                         >Departures</button>
                     </Link>
                     <Link to="/arrivals">
@@ -46,7 +45,7 @@ class SearchResult extends Component {
 
 const mapState = state => {
     return {
-        deprtureList: flightsSelectors.getgetDeprtureListSelector(state),
+        deprtureList: flightsSelectors.getDepartureListSelector(state),
         arrivalList: flightsSelectors.getArrivalListSelector(state),
     };
 };

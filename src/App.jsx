@@ -7,6 +7,7 @@ import Departures from './Departures';
 import Arrivals from './Arrivals';
 import { Provider } from 'react-redux';
 import store from './store';
+import Flight from './Flight';
 
 const App = () => {
     return (
@@ -21,19 +22,22 @@ const App = () => {
                         <Route path="/scoreboard">
                             <Scoreboard />
                         </Route>
-                        <Route path="/departures" >
+                        <Route exact path="/departures" >
                             <Scoreboard />
                             <Departures />
                         </Route>
-                        <Route path="/arrivals" >
+                        <Route exact path="/arrivals" >
                             <Scoreboard />
                             <Arrivals />
                         </Route>
-                        <Route exact path="/departures/:fltNo">
+                        <Route path="/departures/:fltNo">
+                            <Scoreboard />
 
+                            <Flight />
                         </Route>
-                        <Route exact path="/arrivals/:fltNo">
-                            
+                        <Route path="/arrivals/:fltNo">
+                            <Scoreboard />
+                            <Flight />
                         </Route>
                         <Route path="*">
                             Nothing Found

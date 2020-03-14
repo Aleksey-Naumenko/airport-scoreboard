@@ -4,9 +4,13 @@ import { connect } from 'react-redux';
 import * as flightsActions from './flights.actions';
 import * as flightsSelectors from './flights.selectors';
 import moment from 'moment';
+// import Flight from './Flight';
 
 
-const Departures = ({ departureList }) => {
+const Departures = ({ departureList, searchFlight }) => {
+
+    // if (searchFlight) return <Flight />;
+    // console.log(searchFlight);
 
     if (!departureList) return null;
 
@@ -37,12 +41,13 @@ const Departures = ({ departureList }) => {
 
 const mapState = state => {
     return {
-        departureList: flightsSelectors.getgetDeprtureListSelector(state),
+        departureList: flightsSelectors.getDepartureListSelector(state),
+        // searchFlight: flightsSelectors.getSearchFlightSelector(state),
     };
 };
 
 const mapDispatch = {
-    getList: flightsActions.getFlightList
+    getList: flightsActions.getFlightList,
 };
 
 export default connect(mapState, mapDispatch)(Departures);
