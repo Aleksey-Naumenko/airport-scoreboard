@@ -1,53 +1,58 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+import { useRouteMatch, useHistory } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import * as flightsActions from './flights.actions';
 import * as flightsSelectors from './flights.selectors';
 
-class Search extends Component {
-    state = {
-        searchText: '',
-    };
+const Search = ({ setSearchFlight }) => {
 
-    onChange = e => {
+    const [searchText, setSearchText] = useState('');
+    let history = useHistory();
+
+    let { path, url } = useRouteMatch();
+    console.log(path, 'The URL is ', url);
+
+    const onChange = e => {
         const { value } = e.target;
-        this.setState({ searchText: value });
+        setSearchText(value);
     };
 
-    onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
-        this.props.setSearchFlight(this.state.searchText);
-        this.setState({ searchText: '' })
+        setSearchFlight(searchText);
+        if (!searchText) {
+            return history.push(`${url}`);
+        }
+        return history.push(`${url}/${searchText}`);
     };
 
-    render() {
-        return (
-            <form onSubmit={this.onSubmit} className="scoreboard-form">
-                <div className="scoreboard-form__icon">
-                    <FontAwesomeIcon icon={faSearch} />
-                </div>
-                <input
-                    className="scoreboard-form__input"
-                    type="text"
-                    value={this.state.searchText}
-                    onChange={this.onChange}
-                    placeholder="Airline, destinayion or flight #"
-                />
-                <button
-                    type="submit "
-                    className="scoreboard-form__btn btn"
-                >Find</button>
-            </form>
-        );
-    }
+    return (
+        <form onSubmit={onSubmit} className="scoreboard-form">
+            <div className="scoreboard-form__icon">
+                <FontAwesomeIcon icon={faSearch} />
+            </div>
+            <input
+                className="scoreboard-form__input"
+                type="text"
+                value={searchText}
+                onChange={onChange}
+                placeholder="Airline, destinayion or flight #"
+            />
+            <button
+                type="submit "
+                className="scoreboard-form__btn btn"
+            >Find</button>
+        </form>
+    );
 };
 
 const mapState = state => {
     return {
-        getSearchFlightSelector: flightsSelectors.getSearchFlightSelector(state),
+        searchFlight: flightsSelectors.getSearchFlightSelector(state),
     };
 };
 

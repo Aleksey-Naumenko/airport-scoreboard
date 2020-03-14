@@ -5,12 +5,15 @@ import * as flightsActions from './flights.actions';
 import * as flightsSelectors from './flights.selectors';
 import moment from 'moment';
 // import Flight from './Flight';
+import { useEffect } from 'react';
 
 
 const Departures = ({ departureList, searchFlight }) => {
 
-    // if (searchFlight) return <Flight />;
-    // console.log(searchFlight);
+    useEffect(() => {
+        // if (searchFlight) return <Flight />;
+
+    }, [searchFlight])
 
     if (!departureList) return null;
 
@@ -42,7 +45,7 @@ const Departures = ({ departureList, searchFlight }) => {
 const mapState = state => {
     return {
         departureList: flightsSelectors.getDepartureListSelector(state),
-        // searchFlight: flightsSelectors.getSearchFlightSelector(state),
+        searchFlight: flightsSelectors.getSearchFlightSelector(state),
     };
 };
 

@@ -3,34 +3,40 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as flightsActions from './flights.actions';
 import * as flightsSelectors from './flights.selectors';
-// import moment from 'moment';
+import { useParams } from 'react-router-dom';
+import moment from 'moment';
+// import { useEffect } from 'react';
 
-const Flight = ({getSearchFlight}) => {
+const Flight = ({ searchFlight }) => {
+    const { fltNo } = useParams();
 
-    if (getSearchFlight) return null;
-    // const { flight } = this.props.getSearchFlight;
-    console.log(getSearchFlight);
+    console.log(fltNo);
+    if (!searchFlight) return null;
+
+    // useEffect(() => {
+
+    // }, [searchFlight]);
+
+
+    const styles = searchFlight.term === 'A' ?
+        { 'border': '2px solid rgb(10, 211, 10)', 'color': 'rgb(10, 211, 10)' } :
+        { 'border': '2px solid rgb(35, 204, 255)', 'color': 'rgb(35, 204, 255)' };
+
     return (
         <ul className="list">
-            {/* {departureList.map(flight => {
-                    const styles = flight.term === 'A' ?
-                        { 'border': '2px solid rgb(10, 211, 10)', 'color': 'rgb(10, 211, 10)' } :
-                        { 'border': '2px solid rgb(35, 204, 255)', 'color': 'rgb(35, 204, 255)' };
-                    return (
-                        <li key={flight.ID} className="list__item">
-                            <div className="list__item-terminal"><div style={styles}><span>{flight.term}</span></div></div>
-                            <span className="list__item-shedule">{moment(flight.timeDepShedule).format('hh:mm')}</span>
-                            <span className="list__item-destination">{flight['airportToID.name_en']}</span>
-                            <span className="list__item-status">{moment(flight.timeTakeofFact).format('hh:mm')}</span>
-                            <div className="list__item-airline">
-                                <img src={flight.airline.en.logoSmallName} alt="logo" />
-                                <span>
-                                    {flight.airline.en.name}
-                                </span>
-                            </div>
-                            <span className="list__item-fltNo">{flight.fltNo}</span>
-                        </li>)
-                })} */}
+            <li key={searchFlight.ID} className="list__item">
+                <div className="list__item-terminal"><div style={styles}><span>{searchFlight.term}</span></div></div>
+                <span className="list__item-shedule">{moment(searchFlight.timeDepShedule).format('hh:mm')}</span>
+                <span className="list__item-destination">{searchFlight['airportToID.name_en']}</span>
+                <span className="list__item-status">{moment(searchFlight.timeTakeofFact).format('hh:mm')}</span>
+                <div className="list__item-airline">
+                    <img src={searchFlight.airline.en.logoSmallName} alt="logo" />
+                    <span>
+                        {searchFlight.airline.en.name}
+                    </span>
+                </div>
+                <span className="list__item-fltNo">{searchFlight.fltNo}</span>
+            </li>
         </ul>
 
     );
@@ -38,7 +44,7 @@ const Flight = ({getSearchFlight}) => {
 
 const mapState = state => {
     return {
-        getSearchFlight: flightsSelectors.getSearchFlightSelector(state),
+        searchFlight: flightsSelectors.getSearchFlightSelector(state),
     };
 };
 

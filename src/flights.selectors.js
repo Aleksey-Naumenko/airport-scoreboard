@@ -27,7 +27,10 @@ export const getSearchFlightSelector = createSelector(
     [getDepartureListSelector, flightIdSelector],
     (dataList, flightId) => {
         if (dataList) {
-            return dataList.find(flight => flight.fltNo === flightId)
+            return dataList.find(flight => {
+                console.log(flight.fltNo === flightId);
+                return flight.fltNo === flightId
+            })
         }
         return dataList;
     }

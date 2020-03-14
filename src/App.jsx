@@ -32,7 +32,6 @@ const App = () => {
                         </Route>
                         <Route path="/departures/:fltNo">
                             <Scoreboard />
-
                             <Flight />
                         </Route>
                         <Route path="/arrivals/:fltNo">
