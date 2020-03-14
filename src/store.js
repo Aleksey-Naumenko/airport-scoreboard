@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import tasksReducer from './tasks/tasks.reducer';
+import flightsReducer from './flights.reducer';
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({
-    tasksList: tasksReducer,
+    flightsList: flightsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

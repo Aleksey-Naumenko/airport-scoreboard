@@ -3,100 +3,80 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
-.title {
-    font-size: 24px;
+.home {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: rgb(75, 186, 255);
+    color: white;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.page {
+    background-color: rgb(232, 241, 226);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.scoreboard__title {
+    cursor: default;
+    font-size: 45px;
+    font-weight: 400;
     text-transform: uppercase;
     text-align: center;
 }
 
-.todo-list {
-    display: flex;
-    flex-direction: column;
-    margin-top: 32px;
-    background-color: coral;
-    border-radius: 8px;
-    padding: 8px;
-    max-width: 600px;
-    margin: auto;
-}
 
-.list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    margin: auto;
-    width: 100%;
-}
-
-.list-item {
+.scoreboard-form {
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 40px;
-    border-radius: 8px;
-    background-color: wheat;
-    margin-bottom: 8px;
-    padding: 8px;
+    margin-bottom: 30px;
 
-    &:last-child {
-        margin-bottom: 0;
+    &__icon {
+        width: 40px;
+        padding: 10px;
+        height: 60px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        color: lightgrey;
     }
-
-    &_done {
-        opacity: 0.7;
-
-        .list-item__text {
-            text-decoration: line-through;
-        }
-    }
-
-    &__checkbox {
-        margin-right: 8px;
-    }
-
-    &__delete-btn {
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        outline: none;
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        margin-left: auto;
-        text-decoration: none;
-        padding: 0;
-        transform: rotate(45deg);
-        font-size: 18px;
-        line-height: 24px;
-        text-align: center;
-        opacity: 0.7;
-
-        &::before {
-            content: "+";
-        }
-    }
-}
-
-.btn {
-    height: 32px;
-    min-width: 64px;
-    border: 3px solid #ccc;
-    outline: none;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-left: 16px;
-}
-
-.create-task {
-    display: flex;
-    margin-bottom: 8px;
 
     &__input {
-        height: 32px;
-        border: 3px solid #ccc;
-        border-radius: 8px;
-        flex: 1;
+        height: 60px;
+        border: none;
+        padding: 10px;
+        width: 300px;
+        outline: none;
+        font-size: 24px;
+
+        ::-webkit-input-placeholder {color: lightgrey};
+        ::-moz-placeholder          {color: lightgrey};
+        :-moz-placeholder           {color: lightgrey};
+        :-ms-input-placeholder      {color: lightgrey};
+    }
+
+    &__btn {
+        width: 150px;
+        height: 60px;
+        font-size: 25px;
+        border-top-right-radius: 45px;
+        transition: 0.5s;
+
+        &:hover {
+            border-top-right-radius: 15px;
+        }
     }
 }

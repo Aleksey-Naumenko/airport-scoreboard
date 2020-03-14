@@ -1,0 +1,28 @@
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: lightgrey;
+    // position: static;
+    // bottom: 0;
+
+    &-container {
+        display: flex;
+        flex-direction: column;
+        
+        &__title {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        &__item {
+            cursor: pointer;
+            margin-bottom: 5px;
+            display: inline-block;
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+}
