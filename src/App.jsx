@@ -1,13 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Scoreboard from './Scoreboard';
+import Scoreboard from './flights/components/Scoreboard';
 import Header from './header/Header';
 import Footer from './footer/Footer';
-import Departures from './Departures';
-import Arrivals from './Arrivals';
 import { Provider } from 'react-redux';
 import store from './store';
-import Flight from './Flight';
+import FlightsList from './flights/components/FlightsList';
 
 const App = () => {
     return (
@@ -15,33 +13,23 @@ const App = () => {
             <div className="page">
                 <Router>
                     <Header />
+                    <Scoreboard />
+
                     <Switch>
-                        <Route exact path="/">
-                            <Scoreboard />
-                        </Route>
-                        <Route path="/scoreboard">
-                            <Scoreboard />
-                        </Route>
                         <Route exact path="/departures" >
-                            <Scoreboard />
-                            <Departures />
+                            <FlightsList />
                         </Route>
                         <Route exact path="/arrivals" >
-                            <Scoreboard />
-                            <Arrivals />
+                            <FlightsList />
                         </Route>
                         <Route path="/departures/:fltNo">
-                            <Scoreboard />
-                            <Flight />
+                            <FlightsList />
                         </Route>
                         <Route path="/arrivals/:fltNo">
-                            <Scoreboard />
-                            <Flight />
+                            <FlightsList />
                         </Route>
-                        <Route path="*">
-                            Nothing Found
-                    </Route>
                     </Switch>
+
                     <Footer />
                 </Router>
             </div>

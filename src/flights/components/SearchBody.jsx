@@ -1,14 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import './searchBody.scss';
+import '../searchBody.scss';
 import { connect } from 'react-redux';
-import * as flightsActions from '../flights.actions';
-import * as flightsSelectors from '../flights.selectors';
-import { Component } from 'react';
-
+import * as flightsActions from '../redux/flights.actions';
 
 class SearchResult extends Component {
-
 
     componentDidMount() {
         this.props.getList();
@@ -43,15 +39,8 @@ class SearchResult extends Component {
     }
 };
 
-const mapState = state => {
-    return {
-        deprtureList: flightsSelectors.getDepartureListSelector(state),
-        arrivalList: flightsSelectors.getArrivalListSelector(state),
-    };
-};
-
 const mapDispatch = {
     getList: flightsActions.getFlightList
 };
 
-export default connect(mapState, mapDispatch)(SearchResult);
+export default connect(null, mapDispatch)(SearchResult);

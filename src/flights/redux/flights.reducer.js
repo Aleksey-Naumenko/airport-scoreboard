@@ -2,7 +2,7 @@ import {SET_FLIGHTS_LIST, GET_SEARCH_FLIGHT} from './flights.actions';
 
 const defaultState = {
     flightsData: null,
-    searchFlight: null,
+    searchFlight: '',
 };
 
 const flightsReducer = (state = defaultState, action) => {

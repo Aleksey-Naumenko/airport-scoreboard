@@ -7,7 +7,9 @@ export const getDepartureListSelector = createSelector(
     [flightsDataSelector],
     (dataList) => {
         if (dataList) {
-            return dataList.body.departure;
+            return dataList.body.departure
+                .filter(flight =>
+                    new Date(flight.timeDepShedule).getDate() === new Date().getDate());
         }
         return dataList;
     }
@@ -17,20 +19,10 @@ export const getArrivalListSelector = createSelector(
     [flightsDataSelector],
     (dataList) => {
         if (dataList) {
-            return dataList.body.arrival;
-        }
-        return dataList;
-    }
-);
-
-export const getSearchFlightSelector = createSelector(
-    [getDepartureListSelector, flightIdSelector],
-    (dataList, flightId) => {
-        if (dataList) {
-            return dataList.find(flight => {
-                console.log(flight.fltNo === flightId);
-                return flight.fltNo === flightId
-            })
+            return dataList.body.arrival
+                .filter(flight => {
+                    return new Date(flight.timeLandCalc).getDate() === new Date().getDate()
+                })
         }
         return dataList;
     }

@@ -18,9 +18,7 @@ export const getFlightList = () => {
         const date = new Date();
         const newDate = moment(date).format('DD-MM-YYYY');
         fetchFlightsData(newDate)
-            .then(flightsData => {
-                dispatch(setFlightList(flightsData))
-            })
+            .then(flightsData => dispatch(setFlightList(flightsData)))
     }
 };
 
