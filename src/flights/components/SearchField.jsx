@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useHistory, useLocation, useParams } from 'react-router-dom';
@@ -23,10 +22,8 @@ const SearchField = ({ setList }) => {
 
     useEffect(() => {
         setList();
-        setSearchText(fltNo);
+        if (searchText) setSearchText(fltNo);
     }, []);
-
-
 
     const onChange = e => {
         const { value } = e.target;
@@ -36,7 +33,7 @@ const SearchField = ({ setList }) => {
     const onSubmit = e => {
         e.preventDefault();
 
-        if (fltNo) {
+        if (fltNo && searchText) {
             return;
         }
 
@@ -44,11 +41,7 @@ const SearchField = ({ setList }) => {
             history.push(`${location.pathname}/${searchText}`) :
             history.push(`/${direction}`);
 
-       
     };
-
-    console.log(`/${direction}`);
-    console.log(location);
 
     return (
         <>
