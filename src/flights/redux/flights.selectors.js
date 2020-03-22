@@ -1,29 +1,30 @@
 import { createSelector } from 'reselect';
 
 export const flightsDataSelector = state => state.flightsList.flightsData;
-export const flightIdSelector = state => state.flightsList.searchFlight;
+export const departureListSelector = state => state.flightsList.flightsData.departure;
+export const arrivalListSelector = state => state.flightsList.flightsData.arrival;
 
 export const getDepartureListSelector = createSelector(
-    [flightsDataSelector],
+    [departureListSelector],
     (dataList) => {
         if (dataList) {
-            return dataList.body.departure
-                .filter(flight =>
-                    new Date(flight.timeDepShedule).getDate() === new Date().getDate());
+            return dataList
+            .slice()
+            .filter(flight =>
+                new Date(flight.timeDepShedule).getDate() === new Date().getDate());
         }
-        return dataList;
+        return [];
     }
 );
 
 export const getArrivalListSelector = createSelector(
-    [flightsDataSelector],
+    [arrivalListSelector],
     (dataList) => {
         if (dataList) {
-            return dataList.body.arrival
-                .filter(flight => {
-                    return new Date(flight.timeLandCalc).getDate() === new Date().getDate()
-                })
+            return dataList
+                .slice()
+                .filter(flight => new Date(flight.timeLandCalc).getDate() === new Date().getDate());
         }
-        return dataList;
+        return [];
     }
 );

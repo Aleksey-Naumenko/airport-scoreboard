@@ -13,20 +13,12 @@ const App = () => {
             <div className="page">
                 <Router>
                     <Header />
-                    <Scoreboard />
+                    {/* <Scoreboard /> */}
 
                     <Switch>
-                        <Route exact path="/departures" >
-                            <FlightsList />
-                        </Route>
-                        <Route exact path="/arrivals" >
-                            <FlightsList />
-                        </Route>
-                        <Route path="/departures/:fltNo">
-                            <FlightsList />
-                        </Route>
-                        <Route path="/arrivals/:fltNo">
-                            <FlightsList />
+                        <Route path="/:direction?/:fltNo?">
+                            <Scoreboard />
+                            {/* <FlightsList /> */}
                         </Route>
                     </Switch>
 

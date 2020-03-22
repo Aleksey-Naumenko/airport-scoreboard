@@ -1,8 +1,7 @@
-import {SET_FLIGHTS_LIST, GET_SEARCH_FLIGHT} from './flights.actions';
+import {SET_FLIGHTS_LIST } from './flights.actions';
 
 const defaultState = {
-    flightsData: null,
-    searchFlight: '',
+    flightsData: [],
 };
 
 const flightsReducer = (state = defaultState, action) => {
@@ -12,11 +11,6 @@ const flightsReducer = (state = defaultState, action) => {
                 ...state,
                 flightsData: action.payload.flightsData,
             };
-        case GET_SEARCH_FLIGHT:
-            return {
-                ...state,
-                searchFlight: action.payload.fltId,
-            }
         default: return state;
     }
 };

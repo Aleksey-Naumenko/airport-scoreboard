@@ -2,7 +2,6 @@ import { fetchFlightsData } from './flightsGateway';
 import moment from 'moment';
 
 export const SET_FLIGHTS_LIST = 'SET_FLIGHTS_LIST';
-export const GET_SEARCH_FLIGHT = 'GET_SEARCH_FLIGHT';
 
 export const setFlightList = flightsData => {
     return {
@@ -14,19 +13,10 @@ export const setFlightList = flightsData => {
 };
 
 export const getFlightList = () => {
+    const date = new Date();
+    const newDate = moment(date).format('DD-MM-YYYY');
     return (dispatch) => {
-        const date = new Date();
-        const newDate = moment(date).format('DD-MM-YYYY');
         fetchFlightsData(newDate)
-            .then(flightsData => dispatch(setFlightList(flightsData)))
+            .then(flightsData => dispatch(setFlightList(flightsData.body)))
     }
-};
-
-export const setSearchFlightId = fltId => {
-    return {
-        type: GET_SEARCH_FLIGHT,
-        payload: {
-            fltId,
-        }
-    };
 };

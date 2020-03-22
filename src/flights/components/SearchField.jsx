@@ -2,20 +2,31 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as flightsActions from '../redux/flights.actions';
-import * as flightsSelectors from '../redux/flights.selectors';
+import SearchBody from './SearchBody';
 
-const SearchField = ({ setSearchFlight, searchFlightId }) => {
+
+const SearchField = ({ setList }) => {
 
     const [searchText, setSearchText] = useState('');
     let history = useHistory();
     let location = useLocation();
+    const { fltNo, direction } = useParams();
 
     useEffect(() => {
-        setSearchText(searchFlightId);
-    }, [searchFlightId]);
+        if (searchText) {
+            history.push(`${location.pathname}/${searchText}`);
+        }
+    }, [direction]);
+
+    useEffect(() => {
+        setList();
+        setSearchText(fltNo);
+    }, []);
+
+
 
     const onChange = e => {
         const { value } = e.target;
@@ -24,45 +35,49 @@ const SearchField = ({ setSearchFlight, searchFlightId }) => {
 
     const onSubmit = e => {
         e.preventDefault();
-        setSearchFlight(String(searchText));
-        if (!searchText) {
-            const path = location.pathname.includes('departures') ? '/departures' : '/arrivals';
-            return history.push(path);
+
+        if (fltNo) {
+            return;
         }
+
+        searchText ?
+            history.push(`${location.pathname}/${searchText}`) :
+            history.push(`/${direction}`);
+
+       
     };
+
+    console.log(`/${direction}`);
+    console.log(location);
 
     return (
         <>
-        <h1 className="scoreboard__title">Search Flight</h1>
+            <h1 className="scoreboard__title">Search Flight</h1>
 
-        <form onSubmit={onSubmit} className="scoreboard-form">
-            <div className="scoreboard-form__icon">
-                <FontAwesomeIcon icon={faSearch} />
-            </div>
-            <input
-                className="scoreboard-form__input"
-                type="text"
-                value={searchText}
-                onChange={onChange}
-                placeholder="Airline, destinayion or flight #"
-            />
-            <button
-                type="submit "
-                className="scoreboard-form__btn btn"
-            >Find</button>
-        </form>
+            <form onSubmit={onSubmit} className="scoreboard-form">
+                <div className="scoreboard-form__icon">
+                    <FontAwesomeIcon icon={faSearch} />
+                </div>
+                <input
+                    className="scoreboard-form__input"
+                    type="text"
+                    value={searchText}
+                    onChange={onChange}
+                    placeholder="Airline, destinayion or flight #"
+                />
+                <button
+                    type="submit "
+                    className="scoreboard-form__btn btn"
+                >Find</button>
+            </form>
+
+            <SearchBody />
         </>
     );
 };
 
-const mapState = state => {
-    return {
-        searchFlightId: flightsSelectors.flightIdSelector(state),
-    };
-};
-
 const mapDispatch = {
-    setSearchFlight: flightsActions.setSearchFlightId,
+    setList: flightsActions.getFlightList
 };
 
-export default connect(mapState, mapDispatch)(SearchField);
+export default connect(null, mapDispatch)(SearchField);

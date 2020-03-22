@@ -25,19 +25,49 @@
 }
 
 .search-body__btn-container {
-    display: flex;
     width: 60%;
+    height: 50px;
+    position: relative;
 
     a {
         width: 100%;
     }
+
+    .arrivals-btn {
+        position: absolute;
+        right: 0;
+    }
+
+    .departures-btn {
+        position: absolute;
+        left: 0;
+    }
+
     .btn {
-        width: 100%;
+        width: 490px;
         height: 50px;
         font-size: 22px;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
         display: inline-block;
+        // opacity: 1;
+        transition: 0.5s;
+        z-index: 0;
+
+        .btn-icon {
+            margin-right: 10px;
+        }
+
+        // &:hover {
+        //     opacity: 1;
+        // }
+    }
+
+    .active {
+        background-color: #fff;
+        color: rgb(75, 186, 255);
+        // opacity: 1;
+        z-index: 1;
     }
 }
 
