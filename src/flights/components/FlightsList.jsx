@@ -2,8 +2,8 @@ import React from 'react';
 import '../flightsList.scss';
 import { connect } from 'react-redux';
 import * as flightsSelectors from '../redux/flights.selectors';
-import moment from 'moment';
 import { useParams } from 'react-router-dom';
+import Flight from './Flight';
 
 
 const FlightsList = ({ departureList, arrivalList }) => {
@@ -26,35 +26,11 @@ const FlightsList = ({ departureList, arrivalList }) => {
         <ul className="list">
             {
                 listToRender.length === 0 ?
-                    <li style={{ "listStyleType": "none" }}>
-                        <div className="no-flights" >No flights</div>
-                    </li> :
+                    <div className="no-flights" >No flights</div> :
                     listToRender.map(flight => {
-                        const shedule = flight.timeLandCalc || flight.timeDepShedule;
-                        const destination = flight['airportFromID.name_en'] || flight['airportToID.name_en'];
-                        const depArr = flight.timeLandCalc || flight.timeTakeofFact;
-                        const styles = flight.term === 'A' ?
+                        const classes = flight.term === 'A' ?
                             'terminal-a' : 'terminal-d';
-                        return (
-                            <li key={flight.ID} className="list__item">
-                                <div className="list__item-terminal"><div className={styles}><span>{flight.term}</span></div></div>
-                                <span className="list__item-shedule">{`${moment(shedule).format('HH:mm')}`}</span>
-                                <span className="list__item-destination">{destination}</span>
-                                <span className="list__item-status">
-                                    {flight.status === 'CX' ?
-                                        'Canceled' :
-                                        `${`${moment(depArr).format('HH:mm')}`}`
-                                    }
-                                </span>
-                                <div className="list__item-airline">
-                                    <img src={flight.airline.en.logoSmallName} alt="logo" />
-                                    <span>
-                                        {flight.airline.en.name}
-                                    </span>
-                                </div>
-                                <span className="list__item-fltNo">{`${flight['carrierID.IATA']}${flight.fltNo}`}</span>
-                            </li>
-                        )
+                        return <Flight key={flight.ID} classes={classes} fltNo={fltNo} fltId={flight['carrierID.IATA']} {...flight} />
                     })
             }
         </ul>

@@ -22,7 +22,7 @@ const SearchField = ({ setList }) => {
 
     useEffect(() => {
         setList();
-        if (searchText) setSearchText(fltNo);
+        if (fltNo) setSearchText(fltNo);
     }, []);
 
     const onChange = e => {
