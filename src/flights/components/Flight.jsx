@@ -2,25 +2,25 @@ import React from 'react';
 import '../flightsList.scss';
 import moment from 'moment';
 
-const Flight = ({ fltId, fltNo, airline, depArr, status, destination, term, shedule, classes}) => {
+const Flight = ({ classes, flight}) => {
     return ( 
         <li className="list__item">
-        <div className="list__item-terminal"><div className={classes}><span>{term}</span></div></div>
-        <span className="list__item-shedule">{`${moment(shedule).format('HH:mm')}`}</span>
-        <span className="list__item-destination">{destination}</span>
+        <div className="list__item-terminal"><div className={classes}><span>{flight.term}</span></div></div>
+        <span className="list__item-shedule">{`${moment(flight.shedule).format('HH:mm')}`}</span>
+        <span className="list__item-destination">{flight.destination}</span>
         <span className="list__item-status">
-            {status === 'CX' ?
+            {flight.status === 'CX' ?
                 'Canceled' :
-                `${`${moment(depArr).format('HH:mm')}`}`
+                `${`${moment(flight.depArr).format('HH:mm')}`}`
             }
         </span>
         <div className="list__item-airline">
-            <img src={airline.en.logoSmallName} alt="logo" />
+            <img src={flight.airline.en.logoSmallName} alt="logo" />
             <span>
-                {airline.en.name}
+                {flight.airline.en.name}
             </span>
         </div>
-        <span className="list__item-fltNo">{`${fltId}${fltNo}`}</span>
+        <span className="list__item-fltNo">{`${flight['carrierID.IATA']}${flight.fltNo}`}</span>
     </li>
      );
 }

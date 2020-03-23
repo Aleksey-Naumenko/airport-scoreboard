@@ -30,7 +30,7 @@ const FlightsList = ({ departureList, arrivalList }) => {
                     listToRender.map(flight => {
                         const classes = flight.term === 'A' ?
                             'terminal-a' : 'terminal-d';
-                        return <Flight key={flight.ID} classes={classes} fltNo={fltNo} fltId={flight['carrierID.IATA']} {...flight} />
+                        return <Flight key={flight.ID} classes={classes} flight={flight} />
                     })
             }
         </ul>
