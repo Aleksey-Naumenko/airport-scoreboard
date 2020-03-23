@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/airport-scoreboard/static/css/main.bd30b6d7.chunk.css",
+    "main.js": "/airport-scoreboard/static/js/main.8c83f684.chunk.js",
+    "main.js.map": "/airport-scoreboard/static/js/main.8c83f684.chunk.js.map",
+    "runtime-main.js": "/airport-scoreboard/static/js/runtime-main.e603d922.js",
+    "runtime-main.js.map": "/airport-scoreboard/static/js/runtime-main.e603d922.js.map",
+    "static/js/2.35781aff.chunk.js": "/airport-scoreboard/static/js/2.35781aff.chunk.js",
+    "static/js/2.35781aff.chunk.js.map": "/airport-scoreboard/static/js/2.35781aff.chunk.js.map",
+    "index.html": "/airport-scoreboard/index.html",
+    "precache-manifest.726d883aeecf4f932ce722d4251c810c.js": "/airport-scoreboard/precache-manifest.726d883aeecf4f932ce722d4251c810c.js",
+    "service-worker.js": "/airport-scoreboard/service-worker.js",
+    "static/css/main.bd30b6d7.chunk.css.map": "/airport-scoreboard/static/css/main.bd30b6d7.chunk.css.map",
+    "static/js/2.35781aff.chunk.js.LICENSE.txt": "/airport-scoreboard/static/js/2.35781aff.chunk.js.LICENSE.txt",
+    "static/media/logo-airport.png": "/airport-scoreboard/static/media/logo-airport.2d2c20bb.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e603d922.js",
+    "static/js/2.35781aff.chunk.js",
+    "static/css/main.bd30b6d7.chunk.css",
+    "static/js/main.8c83f684.chunk.js"
+  ]
+}
