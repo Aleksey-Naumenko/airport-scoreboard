@@ -50,7 +50,7 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       new CopyPlugin([{ from: '_redirects', to: '' }]),
       new HtmlWebpackPlugin({
-        template: "./src/index.html"s
+        template: "./src/index.html"
       })
     ],
     resolve: {
