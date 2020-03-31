@@ -48,8 +48,9 @@ module.exports = (env, argv) => {
     plugins: [
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
+      new CopyPlugin([{ from: '_redirects', to: '' }]),
       new HtmlWebpackPlugin({
-        template: "./src/index.html"
+        template: "./src/index.html"s
       })
     ],
     resolve: {
