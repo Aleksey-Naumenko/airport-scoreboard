@@ -3,6 +3,10 @@ import '../flightsList.scss';
 import moment from 'moment';
 
 const Flight = ({ classes, flight}) => {
+    if (!flight.airline) {
+        return null
+    };
+    
     return ( 
         <li className="list__item">
         <div className="list__item-terminal"><div className={classes}><span>{flight.term}</span></div></div>

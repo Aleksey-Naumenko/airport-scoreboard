@@ -2,11 +2,13 @@ import React from 'react';
 import './header.scss';
 import Logo from '../images/logo-airport.png';
 
+const logo = require('../images/logo-airport.png');
+
 const Header = () => {
     return ( 
         <header className="header">
             <div className="header-logo">
-                <img className="header-logo__img" src={Logo} alt="Logo"/>
+                <img className="header-logo__img" src={'../images/logo-airport.png'} alt="Logo"/>
             </div>
             <nav className="header-nav">
                 <div className="header-nav__btn">For passengers</div>
