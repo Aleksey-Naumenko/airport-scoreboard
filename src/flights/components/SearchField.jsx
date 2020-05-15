@@ -53,7 +53,7 @@ const SearchField = ({ setList }) => {
           type="text"
           value={searchText}
           onChange={onChange}
-          placeholder="Airline, destinayion or flight #"
+          placeholder="Airline, destination or flight #"
         />
         <button type="submit " className="scoreboard-form__btn btn">
           Find

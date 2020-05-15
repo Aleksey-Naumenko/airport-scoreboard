@@ -1,8 +1,5 @@
 import React from 'react';
 import './header.scss';
-import Logo from '../images/logo-airport.png';
-
-const logo = require('../images/logo-airport.png');
 
 const Header = () => {
     return ( 

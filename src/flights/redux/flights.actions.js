@@ -18,5 +18,5 @@ export const getFlightList = () => {
     return (dispatch) => {
         fetchFlightsData(newDate)
             .then(flightsData => dispatch(setFlightList(flightsData.body)))
-    }
+    };
 };
