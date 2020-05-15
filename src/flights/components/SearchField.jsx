@@ -23,12 +23,12 @@ const SearchField = ({ setList }) => {
     if (fltNo) setSearchText(fltNo);
   }, []);
 
-  const onChange = e => {
+  const onChange = (e) => {
     const { value } = e.target;
     setSearchText(value);
   };
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
 
     if (fltNo && searchText) {
@@ -41,7 +41,7 @@ const SearchField = ({ setList }) => {
   };
 
   return (
-    <>
+    <main className="main">
       <h1 className="scoreboard__title">Search Flight</h1>
 
       <form onSubmit={onSubmit} className="scoreboard-form">
@@ -61,12 +61,12 @@ const SearchField = ({ setList }) => {
       </form>
 
       <SearchBody />
-    </>
+    </main>
   );
 };
 
 const mapDispatch = {
-  setList: flightsActions.getFlightList
+  setList: flightsActions.getFlightList,
 };
 
 export default connect(null, mapDispatch)(SearchField);

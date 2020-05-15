@@ -26,9 +26,14 @@ body {
     background-color: rgb(232, 241, 226);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
     min-height: 100vh;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
 }
 
 .scoreboard__title {
